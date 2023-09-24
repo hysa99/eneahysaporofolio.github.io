@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Projects{% endblock %}
+
+
+{% block content %}
+
+<div class="mb-12 text-3xl text-center">Projects Page</div>
+
+<form class="align-center justify-center center-align flex">
+    <div>
+        <h1>Simple Text Generator based on CHAT GPT !!!!</h1>
+        <br>
+        <hr class="py-1 rounded-4xl bg-green-500">
+        <br>
+        <input class="outline-none bg-green-100 px-12 py-4 rounded-2xl text-black text-2xl font-bold font-mono" placeholder="Enter some prompts here...">
+        <button class="px-12"><i class="fa-solid fa-paper-plane-top"></i>Submit</button>
+    </div>
+</form>
+<br>
+#//display the projects here !!
+<div class="border justify-between text-center border-b-8 border-t-2">
+    <h1 class="text-green-500 text-3xl underline"><strong>The Calculator</strong></h1>
+<br>
+    <form method="POST">
+    {% csrf_token %}
+    <div class="form-group underline underline-green">
+        <label>First Input:</label>
+        <input class="bg-green-200 rounded-2xl text-center py-1 px-2" name="num1" placeholder="first number">
+    </div>
+    <br>
+
+    <div class="form-group underline">
+        <label>Second Input</label>
+        <input class="bg-green-200 rounded-2xl text-center py-1 px-2" name="num2" placeholder="second number">
+    </div>
+    <br>
+
+    <div class="form-group">
+        <button class="btn text-white bg-green-700 rounded-2xl px-5 py-2 mb-4 inline" type="submit" name="add">Get Sum</button>
+        <button class="btn text-white bg-green-700 rounded-2xl px-5 py-2 mb-4 inline" type="submit" name="div">Divide</button>
+        <button class="btn text-white bg-green-700 rounded-2xl px-5 py-2 mb-4 inline" type="submit" name="sub">Substract</button>
+        <button class="btn text-white bg-green-700 rounded-2xl px-5 py-2 mb-4 inline" type="submit" name="mult">Multiply</button>
+    </div>
+    <br>
+    <hr>
+</form>
+    <div class="form-group">
+        <label>The Resultt</label>
+        <h1 class="bg-green-500 text-white text-2xl rounded-2xl"><strong>{{ result }}</strong></h1>
+    </div>
+    <br>
+</div>
+<br>
+<hr>
+<br>
+<script>
+    // Initialization for ES Users
+import {
+  Carousel,
+  initTE,
+} from "tw-elements";
+
+initTE({ Carousel });
+</script>
+<div>
+   <h1>My Simple Travel Advisor Demo 1.0</h1> 
+   <br>
+   <div
+   id="carouselExampleSlidesOnly"
+   class="relative"
+   data-te-carousel-init
+   data-te-ride="carousel">
+   <!--Carousel items-->
+   <div
+     class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+     <!--First item-->
+     <div
+       class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+       data-te-carousel-item
+       data-te-carousel-active>
+       <img
+         src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
+         class="block w-full"
+         alt="Wild Landscape" />
+     </div>
+     <!--Second item-->
+     <div
+       class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+       data-te-carousel-item>
+       <img
+         src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
+         class="block w-full"
+         alt="Camera" />
+     </div>
+     <!--Third item-->
+     <div
+       class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+       data-te-carousel-item>
+       <img
+         src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
+         class="block w-full"
+         alt="Exotic Fruits" />
+     </div>
+   </div>
+ </div>
+</div>
+
+{% endblock %}

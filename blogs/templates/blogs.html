@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Blogs{% endblock %}
+
+
+{% block content %}
+<div class="bg-gray-10 mt-4 py-12 rounded-xl">
+    <div class="bg-white-500 rounded-2xl text-green-600">
+        <a href="{% url 'newsapp:news' %}"><h1 class="mb-12 text-3xl text-center w-50">Get touch with latets news from most famous sources !!</h1></a>
+    </div>
+    <span class="mb-12text-center"><h1 class="text-center">Or see..</h1></span>
+    <br>
+    <h1 class="mb-12 text-3xl text-center">My latest blogs</h1>
+    <div class="">
+        <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            {% for blog in blogs %}
+            <div class="group relative gap-y-1">
+                <a href="{% url 'blogs:details' blog.id %}">
+                    <div class="min-h-80 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-100 lg:h-100">
+                        <img src="{{ blog.image.url }}" alt="image" class="rounded-t-xl">
+                    </div>
+                    
+
+                    <div class="p-4 bg-white rounded-b-xl mt-4 flex justify-between">
+                        <span class="text-white text-bold align-center mx-30 mt-20 mb-0 rounded-2xl px-4 justify-center margin-right right-8 {{ blog.category.color }}">{{ blog.category.name }}</span>
+                        <h1 class="text-2xl underline">{{ blog.name }}</h1>
+                        <br>
+                        <p class="text-gray-500">{{ blog.description | truncatewords:20 }}..</p>
+                        <br>
+                        <span><i class="fa fa-tags" aria-hidden="true"></i>
+                        <strong>{{ blog.tags }}</strong></span>
+                        <br>
+                        <br>
+                        <span> <i class="fa fa-eye" aria-hidden="true"></i>
+                            Watched {{ blog.view_count }} times</span>
+                        <br>
+                        <br>
+                        <a class="text-center text-sm justify-center mt-1 text-sm text-green-500" href="{% url 'blogs:details' blog.id %}"><strong class="underline text-1xl">Learn More</strong></a>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
